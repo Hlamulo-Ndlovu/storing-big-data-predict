@@ -112,7 +112,7 @@ Resources:
         - Key: Name
           Value: DE-Extract-FileServerSG
 
-  FileServerSG:
+  FileGatewaySG:
     Type: AWS::EC2::SecurityGroup
     Properties:
       VpcId: !Ref VPC
