@@ -89,13 +89,13 @@ Resources:
       GroupName: DE-Extract-WindowsInstanceSG
       GroupDescription: Security group for Windows EC2 instance permitting RDP access
       SecurityGroupIngress:
-      - IpProtocol: tcp
-        FromPort: 3389
-        ToPort: 3389
-        CidrIp: 0.0.0.0/0
+        - IpProtocol: tcp
+          FromPort: 3389
+          ToPort: 3389
+          CidrIp: 0.0.0.0/0
       Tags:
-      - Key: Name
-        Value: DE-Extract-WindowsInstanceSG
+        - Key: Name
+          Value: DE-Extract-WindowsInstanceSG
 
   FileServerSG:
     Type: AWS::EC2::SecurityGroup
@@ -104,13 +104,13 @@ Resources:
       GroupName: DE-Extract-FileServerSG
       GroupDescription: Security group for file server permitting SSH access from internal sources within the VPC
       SecurityGroupIngress:
-      - IpProtocol: tcp
-        FromPort: 22
-        ToPort: 22
-        CidrIp: 192.168.10.0/24 # Allow access only from the public subnet
-    Tags:
-      - Key: Name
-        Value: DE-Extract-FileServerSG
+        - IpProtocol: tcp
+          FromPort: 22
+          ToPort: 22
+          CidrIp: 192.168.10.0/24 # Allow access only from the public subnet
+      Tags:
+        - Key: Name
+          Value: DE-Extract-FileServerSG
 
   FileServerSG:
     Type: AWS::EC2::SecurityGroup
@@ -123,9 +123,9 @@ Resources:
           FromPort: 1
           ToPort: 65534
           CidrIp: 192.168.0.0/16
-    Tags:
-      - Key: Name
-        Value: DE-Extract-FileGatewaySG
+      Tags:
+        - Key: Name
+          Value: DE-Extract-FileGatewaySG
   
 Outputs:
   VpcId:
