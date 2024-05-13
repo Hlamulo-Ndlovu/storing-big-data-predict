@@ -41,7 +41,7 @@ Resources:
             Principal:
               Service: ec2.amazonaws.com
             Action: sts:AssumeRole
-      DeletionPolicy: Delete
+    DeletionPolicy: Delete
   WindowsInstanceProfile:
     Type: AWS::IAM::InstanceProfile
     Properties:
@@ -62,7 +62,7 @@ Resources:
             Resource: "*"
       Roles:
         - !Ref WindowsInstanceRole
-      DeletionPolicy: Delete
+    DeletionPolicy: Delete
   WindowsInstance:
     Type: AWS::EC2::Instance
     Properties:
