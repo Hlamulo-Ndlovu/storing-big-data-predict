@@ -52,7 +52,7 @@ Resources:
             Resource: "*"
       Roles:
         - !Ref WindowsInstanceRole
-      DeletionPolicy: Delete
+      # DeletionPolicy: Delete
   WindowsInstance:
     Type: AWS::EC2::Instance
     Properties:
