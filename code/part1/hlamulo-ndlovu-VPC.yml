@@ -1,13 +1,5 @@
-AWSTemplateFormatVersion: 2010-09-09
-Metadata:
-  'AWS::CloudFormation::Interface':
-    ParameterGroups:
-      - Label:
-          default: Extract Predict Part 1 - File Server resource deployment
-        Parameters:
-          - EnvironmentName
-          - VpcCIDR
-          - DataCenterPublicSubnetCIDR
+Description:  This template deploys a VPC, with a public subnets. It deploys an internet gateway, with a default
+  route on the public subnets. It deploys a pair of NAT gateways (one in each AZ), and default routes for them in the public subnets.
 
 Parameters:
   EnvironmentName:
@@ -126,28 +118,3 @@ Resources:
       Tags:
         - Key: Name
           Value: DE-Extract-FileGatewaySG
-  
-Outputs:
-  VpcId:
-    Description: ID of the created VPC
-    Value: !Ref VPC
-
-  InternetGatewayId:
-    Description: ID of the created Internet Gateway
-    Value: !Ref InternetGateway
-
-  DataCenterPublicSubnetId:
-    Description: ID of the created public subnet in the data center
-    Value: !Ref DataCenterPublicSubnet
-
-  WindowsInstanceSecurityGroupId:
-    Description: ID of the security group for the Windows EC2 instance
-    Value: !GetAtt WindowsInstanceSG.GroupId
-
-  FileServerSecurityGroupId:
-    Description: ID of the security group for the file server
-    Value: !GetAtt FileServerSG.GroupId
-
-  FileGatewaySecurityGroupId:
-    Description: ID of the security group for the file gateway
-    Value: !GetAtt FileGatewaySG.GroupId
