@@ -1,15 +1,5 @@
-AWSTemplateFormatVersion: 2010-09-09
-Metadata:
-  'AWS::CloudFormation::Interface':
-    ParameterGroups:
-      - Label:
-          default: Extract Predict Part 1 - File Server resource deployment
-        Parameters:
-          - KeyName
-          - VPC
-          - Subnet
-          - SecurityGroupIds
-          - LatestLinuxAmiId
+Description:  This template deploys a Windows Instance, with Windows Instance role and policy.
+
 Parameters:
   KeyName:
     Description: Select the key pair used to decrypt the Windows instance password
@@ -75,10 +65,3 @@ Resources:
       Tags:
         - Key: Name
           Value: DE-Extract-Windows-Instance
-      
-Outputs:
-  WindowsInstance:
-    Description: Private IP address of Windows instance
-    Value: !GetAtt
-      - WindowsInstance
-      - PrivateIp
