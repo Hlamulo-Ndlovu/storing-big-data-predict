@@ -4,7 +4,6 @@ Parameters:
   KeyName:
     Description: Select the key pair used to decrypt the Windows instance password
     Type: 'AWS::EC2::KeyPair::KeyName'
-    ConstraintDescription: Must be the name of an existing EC2 KeyPair.
   VPC:
     Description: Select the VPC for the Windows instance
     Type: 'AWS::EC2::VPC::Id'
@@ -23,7 +22,6 @@ Resources:
   WindowsInstanceRole:
     Type: AWS::IAM::Role
     Properties:
-      RoleName: WindowsInstanceRole
       AssumeRolePolicyDocument:
         Version: '2012-10-17'
         Statement:
@@ -37,7 +35,7 @@ Resources:
     Properties:
       Path: /
       Roles:
-        - !Ref WindowsInstanceRole
+        - Ref: WindowsInstanceRole
   WindowsInstanceRolePolicy:
     Type: AWS::IAM::Policy
     Properties:
@@ -51,7 +49,7 @@ Resources:
               - "s3:List*"
             Resource: "*"
       Roles:
-        - !Ref WindowsInstanceRole
+        - Ref: WindowsInstanceRole
     DeletionPolicy: Delete
   WindowsInstance:
     Type: AWS::EC2::Instance
